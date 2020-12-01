@@ -13,7 +13,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-           <a href="{{ route('banner.create') }}" class="btn btn-primary btn-md">Tambah Banner</a>
+           <a href="{{ route('admin.banner.create') }}" class="btn btn-primary btn-md">Tambah Banner</a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -42,9 +42,9 @@
                     <td>{{Str::limit( strip_tags( $banner->desc ), 100 )}}</td>
                     <td>{{ $banner->link }}</td>
                     <td>
-                        <a href="{{route('banner.edit', [$banner->id])}}" class="btn btn-info btn-sm"> Edit </a>
+                        <a href="{{route('admin.banner.edit', [$banner->id])}}" class="btn btn-info btn-sm"> Edit </a>
                 
-                        <form method="POST" action="{{route('banner.destroy', [$banner->id])}}" class="d-inline" onsubmit="return confirm('Delete this banner permanently?')">
+                        <form method="POST" action="{{route('admin.banner.destroy', [$banner->id])}}" class="d-inline" onsubmit="return confirm('Delete this banner permanently?')">
             
                             @csrf
             

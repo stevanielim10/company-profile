@@ -77,11 +77,11 @@ class GeneralController extends Controller
         // dd($general);
         if ( $general->save()) {
 
-            return redirect()->route('general')->with('success', 'Data updated successfully');
+            return redirect()->route('admin.general')->with('success', 'Data updated successfully');
     
            } else {
                
-            return redirect()->route('general')->with('error', 'Data failed to update');
+            return redirect()->route('admin.general')->with('error', 'Data failed to update');
     
            }
     }
@@ -103,11 +103,11 @@ class GeneralController extends Controller
 
         if ( $about->save()) {
 
-            return redirect()->route('about')->with('success', 'Data updated successfully');
+            return redirect()->route('admin.about')->with('success', 'Data updated successfully');
     
            } else {
                
-            return redirect()->route('about')->with('error', 'GeneDataral failed to update');
+            return redirect()->route('admin.about')->with('error', 'GeneDataral failed to update');
     
            }
 

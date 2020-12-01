@@ -54,7 +54,7 @@
 </div>
 @endif
 
-<form action="{{ route('general.update') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.general.update') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
     <div class="container">

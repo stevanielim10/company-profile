@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{About, Banner, General};
+use App\Models\{About, Banner, General, Pcategory, Portfolio};
 class FrontController extends Controller
 {
     public function home()
@@ -11,7 +11,9 @@ class FrontController extends Controller
         $about = About::find(1);
         $banner = Banner::all();
         $general = General::find(1);
-        return view ('front.home',compact('about','banner','general'));
+        $pcategories = Pcategory::all();
+        $portfolio = Portfolio::all();
+        return view ('front.home',compact('about','banner','general','pcategories','portfolio'));
     }
 
     public function about()
@@ -37,10 +39,11 @@ class FrontController extends Controller
         return view ('front.portfolio',compact('general'));
     }
 
-    public function portfolioshow()
+    public function portfolioshow($slug)
     {
         $general = General::find(1);
-        return view ('front.portfolioshow',compact('general'));
+        $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
+        return view ('front.portfolioshow',compact('general','portfolio'));
     }
 
     public function blog()
