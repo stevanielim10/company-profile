@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\General;
+use App\Models\{Banner, General};
 class FrontController extends Controller
 {
     public function home()
     {
+        $banner = Banner::all();
         $general = General::find(1);
-        return view ('front.home',compact('general'));
+        return view ('front.home',compact('banner','general'));
     }
 
     public function about()

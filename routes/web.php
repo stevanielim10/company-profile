@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{FrontController, GeneralController};
+use App\Http\Controllers\{BannerController, FrontController, GeneralController};
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +40,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('general-settings', [GeneralController::class, 'general'])->name('general');
     Route::post('general-settings', [GeneralController::class, 'generalUpdate'])->name('general.update');
 
+    // Manage Banner
+    Route::get('banner', [BannerController::class, 'index'])->name('banner');
+    Route::get('banner/create', [BannerController::class, 'create'])->name('banner.create');
+    Route::post('banner/create', [BannerController::class, 'store'])->name('banner.store');
+    Route::get('banner/edit/{id}', [BannerController::class, 'edit'])->name('banner.edit');
+    Route::post('banner/edit/{id}', [BannerController::class, 'update'])->name('banner.update');
+    Route::delete('banner/destroy/{id}',[BannerController::class, 'destroy'])->name('banner.destroy');
 });
