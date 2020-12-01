@@ -40,6 +40,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('general-settings', [GeneralController::class, 'general'])->name('general');
     Route::post('general-settings', [GeneralController::class, 'generalUpdate'])->name('general.update');
 
+    // About
+    Route::get('about', [GeneralController::class, 'about'])->name('about');
+    Route::post('about', [GeneralController::class, 'aboutUpdate'])->name('about.update');
+
     // Manage Banner
     Route::get('banner', [BannerController::class, 'index'])->name('banner');
     Route::get('banner/create', [BannerController::class, 'create'])->name('banner.create');

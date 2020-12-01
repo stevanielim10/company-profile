@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\General;
+use App\Models\{About, General};
 
 class GeneralController extends Controller
 {
@@ -77,12 +77,39 @@ class GeneralController extends Controller
         // dd($general);
         if ( $general->save()) {
 
-            return redirect()->route('general')->with('success', 'General updated successfully');
+            return redirect()->route('general')->with('success', 'Data updated successfully');
     
            } else {
                
-            return redirect()->route('general')->with('error', 'General failed to update');
+            return redirect()->route('general')->with('error', 'Data failed to update');
     
            }
+    }
+
+    public function about()
+    {
+        $about = About::find(1);
+        return view ('admin.about',[
+            'about' => $about
+        ]);
+    }
+
+    public function aboutUpdate(Request $request)
+    {
+        $about = About::find(1);
+        $about->title = $request->title;
+        $about->subject = $request->subject;
+        $about->desc = $request->desc;
+
+        if ( $about->save()) {
+
+            return redirect()->route('about')->with('success', 'Data updated successfully');
+    
+           } else {
+               
+            return redirect()->route('about')->with('error', 'GeneDataral failed to update');
+    
+           }
+
     }
 }
