@@ -5,13 +5,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Purdimen Constructions</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+  <title>{{ $general->title }}</title>
+  <meta content="{{ $general->meta_desc }}" name="description">
+  <meta content="{{ $general->keyword }}" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('front/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('front/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('storage/'.$general->favicon) }}" rel="icon">
+  <link href="{{ asset('storage/'.$general->favicon) }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -43,9 +43,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="/"><span>Com</span>pany</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="front/img/logo.png" alt="" class="img-fluid"></a>-->
+      <a href="/" class="logo mr-auto"><img src="{{ asset('storage/'.$general->logo) }}" alt="" class="img-fluid"></a>
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
@@ -61,16 +59,15 @@
           <li><a href="{{ route('service') }}">Services</a></li>
           <li><a href="{{ route('portfolio') }}">Portfolio</a></li>
           <li><a href="{{ route('blog') }}">Blog</a></li>
-          <li><a href="{{ route('contact') }}">Contact</a></li>
-
+      
         </ul>
       </nav><!-- .nav-menu -->
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="icofont-twitter"></i></a>
-        <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
-        <a href="#" class="instagram"><i class="icofont-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>
+        <a href="{{ $general->twitter }}" target="_blank" class="twitter"><i class="icofont-twitter"></i></a>
+        <a href="{{ $general->facebook }}" target="_blank" class="facebook"><i class="icofont-facebook"></i></a>
+        <a href="{{ $general->instagram }}" target="_blank" class="instagram"><i class="icofont-instagram"></i></a>
+        <a href="{{ $general->linkedin }}" target="_blank" class="linkedin"><i class="icofont-linkedin"></i></i></a>
       </div>
 
     </div>
@@ -88,11 +85,13 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h3>Company</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              {{ $general->address1 }} <br>
+              {{ $general->address2 }}<br>
+              <a href="{{ $general->gmaps }}" target="_blank" rel="noopener noreferrer">(Go to gmaps)</a>
+              <br><br>
+              
+              <strong>Phone:</strong> {{ $general->phone }}<br>
+              <strong>Email:</strong> {{ $general->email }}<br>
             </p>
           </div>
 
@@ -134,7 +133,7 @@
 
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-          &copy; Copyright <strong><span>Company</span></strong>. All Rights Reserved
+          &copy; Copyright <strong><span>{{ $general->footer }}</span></strong>. All Rights Reserved
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
@@ -145,11 +144,10 @@
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <a href="{{ $general->twitter }}" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="{{ $general->facebook }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="{{ $general->instagram }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="{{ $general->linkedin }}" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </footer><!-- End Footer -->

@@ -3,41 +3,53 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\General;
 class FrontController extends Controller
 {
-    public function home(){
-        return view ('front.home');
+    public function home()
+    {
+        $general = General::find(1);
+        return view ('front.home',compact('general'));
     }
 
-    public function about(){
-        return view ('front.about');
+    public function about()
+    {
+        $general = General::find(1);
+        return view ('front.about',compact('general'));
     }
 
-    public function testi(){
-        return view ('front.testi');
+    public function testi()
+    {
+        $general = General::find(1);
+        return view ('front.testi',compact('general'));
     }
-    public function service(){
-        return view ('front.service');
-    }
-
-    public function portfolio(){
-        return view ('front.portfolio');
-    }
-
-    public function portfolioshow(){
-        return view ('front.portfolioshow');
+    public function service()
+    {
+        $general = General::find(1);
+        return view ('front.service',compact('general'));
     }
 
-    public function blog(){
-        return view ('front.blog');
+    public function portfolio()
+    {
+        $general = General::find(1);
+        return view ('front.portfolio',compact('general'));
+    }
+
+    public function portfolioshow()
+    {
+        $general = General::find(1);
+        return view ('front.portfolioshow',compact('general'));
+    }
+
+    public function blog()
+    {
+        $general = General::find(1);
+        return view ('front.blog',compact('general'));
     }
 
     public function blogshow(){
-        return view ('front.blogshow');
+        $general = General::find(1);
+        return view ('front.blogshow',compact('general'));
     }
 
-    public function contact(){
-        return view ('front.contact');
-    }
 }
