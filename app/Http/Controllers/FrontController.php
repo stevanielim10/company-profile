@@ -36,7 +36,9 @@ class FrontController extends Controller
     public function portfolio()
     {
         $general = General::find(1);
-        return view ('front.portfolio',compact('general'));
+        $pcategories = Pcategory::all();
+        $portfolio = Portfolio::all();
+        return view ('front.portfolio',compact('general','pcategories','portfolio'));
     }
 
     public function portfolioshow($slug)

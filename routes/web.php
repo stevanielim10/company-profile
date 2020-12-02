@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, FrontController, GeneralController, PcategoryController, PortfolioController};
+use App\Http\Controllers\{BannerController, CategoryController, FrontController, GeneralController, PcategoryController, PortfolioController, PostController, TagController};
 
 /*
 |--------------------------------------------------------------------------
@@ -66,4 +66,40 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('portfolio/edit/{id}', [PortfolioController::class, 'edit'])->name('admin.portfolio.edit');
     Route::post('portfolio/edit/{id}', [PortfolioController::class, 'update'])->name('admin.portfolio.update');
     Route::delete('portfolio/destroy/{id}',[PortfolioController::class, 'destroy'])->name('admin.portfolio.destroy');
+
+     // Manage Categories
+     Route::get('categories', [CategoryController::class, 'index'])->name('admin.category');
+     Route::get('categories/create', [CategoryController::class, 'create'])->name('admin.category.create');
+     Route::post('categories/create', [CategoryController::class, 'store'])->name('admin.category.store');
+     Route::get('categories/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
+     Route::post('categories/edit/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+     Route::delete('categories/destroy/{id}',[CategoryController::class, 'destroy'])->name('admin.category.destroy');
+
+     // Manage Tags
+     Route::get('tags', [TagController::class, 'index'])->name('admin.tag');
+     Route::get('tags/create', [TagController::class, 'create'])->name('admin.tag.create');
+     Route::post('tags/create', [TagController::class, 'store'])->name('admin.tag.store');
+     Route::get('tags/edit/{id}', [TagController::class, 'edit'])->name('admin.tag.edit');
+     Route::post('tags/edit/{id}', [TagController::class, 'update'])->name('admin.tag.update');
+     Route::delete('tags/destroy/{id}',[TagController::class, 'destroy'])->name('admin.tag.destroy');
+
+     // Manage Blog
+    Route::get('post',[PostController::class, 'index'])->name('admin.post');
+
+    Route::get('post/create',[PostController::class, 'create'])->name('admin.post.create');
+
+    Route::post('post/create',[PostController::class, 'store'])->name('admin.post.store');
+
+    Route::get('post/edit/{id}',[PostController::class, 'edit'])->name('admin.post.edit');
+
+    Route::post('post/edit/{id}',[PostController::class, 'update'])->name('admin.post.update');
+
+    Route::get('post/trash',[PostController::class, 'trash'])->name('admin.post.trash');
+
+    Route::post('post/{id}/restore',[PostController::class, 'restore'])->name('admin.post.restore');
+
+    Route::delete('post/trash/{id}',[PostController::class, 'destroy'])->name('admin.post.destroy');
+
+    Route::delete('post/destroy/{id}',[PostController::class, 'deletePermanent'])->name('admin.post.deletePermanent');
+
 });

@@ -9,17 +9,23 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>Admin - Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
    {{-- Summernote CDN --}}
-   <link href="{{ asset('admin/css/summernote-bs4.min.css') }}" rel="stylesheet">
+
+   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+   
+     {{-- Select2 Style CDN --}}
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
   @yield('styles')
 
@@ -34,11 +40,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
+        <div class="sidebar-brand-text mx-3">Our Company<sup>1.0</sup></div>
       </a>
 
       <!-- Divider -->
@@ -63,13 +66,14 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Blog</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <a class="collapse-item" href="{{ route('admin.post') }}">Blog</a>
+            <a class="collapse-item" href="{{ route('admin.category') }}">Categories</a>
+            <a class="collapse-item" href="{{ route('admin.tag') }}">Tags</a>
+            <a class="collapse-item" href="{{ route('admin.post.trash') }}">Trash</a>
           </div>
         </div>
       </li>
@@ -157,7 +161,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth::user()->name }}</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -252,8 +256,18 @@
   <script src="{{ asset('admin/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('admin/js/demo/chart-pie-demo.js') }}"></script>
 
-  <script src="{{ asset('admin/js/summernote-bs4.min.js') }}"></script>
+  {{-- Select2 JS --}}
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
+  <script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "Choose Some Tags"
+        });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
   <script src="{{ asset('admin/js/summernote-image-title.js') }}"></script>
 
   <script>
