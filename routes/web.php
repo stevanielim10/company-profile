@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PartnerController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
+use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PartnerController, PcategoryController, PortfolioController, PostController, ServiceController, TagController, TestimonialController, TeamController};
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +18,11 @@ use App\Http\Controllers\{BannerController, CategoryController, FaqController, F
 //     return view('welcome');
 // });
 Route::get('/', [FrontController::class, 'home'])->name('homepage');
+Route::post('/', [FrontController::class, 'subscribe'])->name('subscribe');
 Route::get('about-us', [FrontController::class, 'about'])->name('about');
 Route::get('testimonials', [FrontController::class, 'testi'])->name('testi');
 Route::get('services', [FrontController::class, 'service'])->name('service');
+Route::get('services/{slug}', [FrontController::class, 'serviceshow'])->name('serviceshow');
 Route::get('portfolio', [FrontController::class, 'portfolio'])->name('portfolio');
 Route::get('portfolio/{slug}', [FrontController::class, 'portfolioshow'])->name('portfolioshow');
 Route::get('blog', [FrontController::class, 'blog'])->name('blog');
@@ -147,4 +149,20 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('partners/edit/{id}', [PartnerController::class, 'edit'])->name('admin.partner.edit');
     Route::post('partners/edit/{id}', [PartnerController::class, 'update'])->name('admin.partner.update');
     Route::delete('partners/destroy/{id}',[PartnerController::class, 'destroy'])->name('admin.partner.destroy');
+
+    // Manage Services
+    Route::get('services', [ServiceController::class, 'index'])->name('admin.service');
+    Route::get('services/create', [ServiceController::class, 'create'])->name('admin.service.create');
+    Route::post('services/create', [ServiceController::class, 'store'])->name('admin.service.store');
+    Route::get('services/edit/{id}', [ServiceController::class, 'edit'])->name('admin.service.edit');
+    Route::post('services/edit/{id}', [ServiceController::class, 'update'])->name('admin.service.update');
+    Route::delete('services/destroy/{id}',[ServiceController::class, 'destroy'])->name('admin.service.destroy');
+
+    // Manage Team
+    Route::get('teams', [TeamController::class, 'index'])->name('admin.team');
+    Route::get('teams/create', [TeamController::class, 'create'])->name('admin.team.create');
+    Route::post('teams/create', [TeamController::class, 'store'])->name('admin.team.store');
+    Route::get('teams/edit/{id}', [TeamController::class, 'edit'])->name('admin.team.edit');
+    Route::post('teams/edit/{id}', [TeamController::class, 'update'])->name('admin.team.update');
+    Route::delete('teams/destroy/{id}',[TeamController::class, 'destroy'])->name('admin.team.destroy');
 });

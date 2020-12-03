@@ -108,6 +108,17 @@
           <span>Partners</span></a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.service') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Services</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.team') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Team</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.testi') }}">
