@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
+use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PartnerController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
 
 /*
 |--------------------------------------------------------------------------
@@ -139,4 +139,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('faq/edit/{id}', [FaqController::class, 'edit'])->name('admin.faq.edit');
     Route::post('faq/edit/{id}', [FaqController::class, 'update'])->name('admin.faq.update');
     Route::delete('faq/destroy/{id}',[FaqController::class, 'destroy'])->name('admin.faq.destroy');
+
+    // Manage Partners
+    Route::get('partners', [PartnerController::class, 'index'])->name('admin.partner');
+    Route::get('partners/create', [PartnerController::class, 'create'])->name('admin.partner.create');
+    Route::post('partners/create', [PartnerController::class, 'store'])->name('admin.partner.store');
+    Route::get('partners/edit/{id}', [PartnerController::class, 'edit'])->name('admin.partner.edit');
+    Route::post('partners/edit/{id}', [PartnerController::class, 'update'])->name('admin.partner.update');
+    Route::delete('partners/destroy/{id}',[PartnerController::class, 'destroy'])->name('admin.partner.destroy');
 });

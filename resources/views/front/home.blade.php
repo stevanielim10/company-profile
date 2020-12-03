@@ -224,58 +224,20 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Clients</h2>
+          <h2>Partners</h2>
         </div>
 
         <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
 
+          @foreach ($partner as $partner)
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-1.png') }}" class="img-fluid" alt="">
+              <a href="{{ $partner->link }}" target="_blank" rel="noopener noreferrer">
+                <img src="{{ asset('storage/'.$partner->cover) }}" class="img-fluid" alt="{{ $partner->name }}">
+              </a>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-2.png') }}" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-3.png') }}" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-4.png') }}" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-5.png') }}" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-6.png') }}" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-7.png') }}" class="img-fluid" alt="">
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-6">
-            <div class="client-logo">
-              <img src="{{ asset('front/img/clients/client-8.png') }}" class="img-fluid" alt="">
-            </div>
-          </div>
+          @endforeach
 
         </div>
 
