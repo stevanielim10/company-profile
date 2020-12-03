@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, CategoryController, FrontController, GeneralController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
+use App\Http\Controllers\{BannerController, CategoryController, FrontController, GeneralController, LinkController, PageController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +26,9 @@ Route::get('portfolio/{slug}', [FrontController::class, 'portfolioshow'])->name(
 Route::get('blog', [FrontController::class, 'blog'])->name('blog');
 Route::get('blog/search',[FrontController::class, 'search'])->name('search');
 Route::get('blog/{slug}', [FrontController::class, 'blogshow'])->name('blogshow');
-
-
 Route::get('categories/{category:slug}',[FrontController::class, 'category'])->name('category');
 Route::get('tags/{tag:slug}',[FrontController::class, 'tag'])->name('tag');
+Route::get('pages/{slug}', [FrontController::class, 'page'])->name('page');
 
 
 
@@ -116,6 +115,22 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('testimonials/edit/{id}', [TestimonialController::class, 'edit'])->name('admin.testi.edit');
     Route::post('testimonials/edit/{id}', [TestimonialController::class, 'update'])->name('admin.testi.update');
     Route::delete('testimonials/destroy/{id}',[TestimonialController::class, 'destroy'])->name('admin.testi.destroy');
+
+    // Manage Pages
+    Route::get('pages', [PageController::class, 'index'])->name('admin.page');
+    Route::get('pages/create', [PageController::class, 'create'])->name('admin.page.create');
+    Route::post('pages/create', [PageController::class, 'store'])->name('admin.page.store');
+    Route::get('pages/edit/{id}', [PageController::class, 'edit'])->name('admin.page.edit');
+    Route::post('pages/edit/{id}', [PageController::class, 'update'])->name('admin.page.update');
+    Route::delete('pages/destroy/{id}',[PageController::class, 'destroy'])->name('admin.page.destroy');
+
+    // Manage Links
+    Route::get('links', [LinkController::class, 'index'])->name('admin.link');
+    Route::get('links/create', [LinkController::class, 'create'])->name('admin.link.create');
+    Route::post('links/create', [LinkController::class, 'store'])->name('admin.link.store');
+    Route::get('links/edit/{id}', [LinkController::class, 'edit'])->name('admin.link.edit');
+    Route::post('links/edit/{id}', [LinkController::class, 'update'])->name('admin.link.update');
+    Route::delete('links/destroy/{id}',[LinkController::class, 'destroy'])->name('admin.link.destroy');
 
 
 });

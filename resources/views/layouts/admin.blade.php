@@ -85,6 +85,18 @@
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.link') }}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Links</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.page') }}">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Pages</span></a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.testi') }}">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Testimonials</span></a>
