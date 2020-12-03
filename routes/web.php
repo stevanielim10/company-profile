@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PartnerController, PcategoryController, PortfolioController, PostController, ServiceController, TagController, TestimonialController, TeamController};
+use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PartnerController, PcategoryController, PortfolioController, PostController, ServiceController, TagController, TestimonialController, TeamController, UserController};
 
 /*
 |--------------------------------------------------------------------------
@@ -165,4 +165,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('teams/edit/{id}', [TeamController::class, 'edit'])->name('admin.team.edit');
     Route::post('teams/edit/{id}', [TeamController::class, 'update'])->name('admin.team.update');
     Route::delete('teams/destroy/{id}',[TeamController::class, 'destroy'])->name('admin.team.destroy');
+
+     // Manage Admin
+     Route::get('users', [UserController::class, 'index'])->name('admin.user');
+     Route::post('users/{id}', [UserController::class, 'changepassword'])->name('admin.user.changepassword');
+     Route::get('users/create', [UserController::class, 'create'])->name('admin.user.create');
+     Route::post('users/create', [UserController::class, 'store'])->name('admin.user.store');
+     Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
+     Route::post('users/edit/{id}', [UserController::class, 'update'])->name('admin.user.update');
+     Route::delete('users/destroy/{id}',[UserController::class, 'destroy'])->name('admin.user.destroy');
 });

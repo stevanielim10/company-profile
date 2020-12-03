@@ -80,7 +80,7 @@
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
             <p>
-              {{ $about->desc }}
+              {!! $about->desc !!}
             </p>
           </div>
         </div>

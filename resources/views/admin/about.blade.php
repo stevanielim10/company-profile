@@ -39,7 +39,7 @@
     <div class="form-group ml-5">
         <label for="desc" class="col-sm-2 col-form-label">Desc</label>
         <div class="col-sm-7">
-          <textarea name="desc" id="desc" cols="30" rows="10" class="form-control {{$errors->first('desc') ? "is-invalid" : "" }} " id="summernote">{{old('desc') ? old('desc') : $about->desc}}</textarea>
+          <textarea name="desc" cols="30" rows="10" class="form-control {{$errors->first('desc') ? "is-invalid" : "" }} " id="summernote">{{old('desc') ? old('desc') : $about->desc}}</textarea>
           <div class="invalid-feedback">
             {{ $errors->first('desc') }}    
         </div> 

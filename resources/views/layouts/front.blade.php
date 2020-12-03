@@ -32,6 +32,9 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('front/css/style.css') }}" rel="stylesheet">
+  
+  {{-- Sharethis --}}
+  {!! $general->sharethis !!}
 
   <!-- =======================================================
   * Template Name: Company - v2.1.0
@@ -184,6 +187,10 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('front/js/main.js') }}"></script>
+
+  {!! $general->tawkto !!}
+
+  @stack('scripts')
 
 </body>
 

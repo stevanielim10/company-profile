@@ -96,6 +96,7 @@
 
             <div class="blog-comments" data-aos="fade-up">
 
+              <div id="disqus_thread"></div>
 
             </div><!-- End blog comments -->
 
@@ -158,3 +159,7 @@
 
   </main><!-- End #main -->
 @endsection
+
+@push('scripts')
+    {!! $general->disqus !!}
+@endpush

@@ -54,6 +54,12 @@
           <span>Dashboard</span></a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.user') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Admin</span></a>
+      </li>
+
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">

@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{About, General};
+use App\Models\{About, General, Page, Post, Team, User};
 
 class GeneralController extends Controller
 {
     public function dashboard(){
-        return view ('admin.dashboard');
+        $admin = User::count();
+        $team = Team::count();
+        $blog = Post::count();
+        $page = Page::count();
+        return view ('admin.dashboard', compact('admin','blog','page','team'));
     }
 
     public function general(){
