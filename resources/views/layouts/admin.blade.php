@@ -83,22 +83,28 @@
           </div>
         </div>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.faq') }}">
+          <i class="fas fa-fw fa-table"></i>
+          <span>FAQ</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.link') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-table"></i>
           <span>Links</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.page') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-table"></i>
           <span>Pages</span></a>
       </li>
 
       <li class="nav-item">
         <a class="nav-link" href="{{ route('admin.testi') }}">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-table"></i>
           <span>Testimonials</span></a>
       </li>
 

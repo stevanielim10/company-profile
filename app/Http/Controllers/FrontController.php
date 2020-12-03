@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{About, Banner, Category, General, Link, Page, Pcategory, Portfolio, Post, Tag, Testimonial};
+use App\Models\{About, Banner, Category, Faq, General, Link, Page, Pcategory, Portfolio, Post, Tag, Testimonial};
 class FrontController extends Controller
 {
     public function home()
@@ -19,9 +19,11 @@ class FrontController extends Controller
 
     public function about()
     {
+        $about = About::find(1);
+        $faq = Faq::all();
         $general = General::find(1);
         $link = Link::orderBy('name','asc')->get();
-        return view ('front.about',compact('general','link'));
+        return view ('front.about',compact('about','faq','general','link'));
     }
 
     public function testi()

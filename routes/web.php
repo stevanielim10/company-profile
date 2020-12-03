@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, CategoryController, FrontController, GeneralController, LinkController, PageController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
+use App\Http\Controllers\{BannerController, CategoryController, FaqController, FrontController, GeneralController, LinkController, PageController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
 
 /*
 |--------------------------------------------------------------------------
@@ -132,5 +132,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('links/edit/{id}', [LinkController::class, 'update'])->name('admin.link.update');
     Route::delete('links/destroy/{id}',[LinkController::class, 'destroy'])->name('admin.link.destroy');
 
-
+    // Manage FAQ
+    Route::get('faq', [FaqController::class, 'index'])->name('admin.faq');
+    Route::get('faq/create', [FaqController::class, 'create'])->name('admin.faq.create');
+    Route::post('faq/create', [FaqController::class, 'store'])->name('admin.faq.store');
+    Route::get('faq/edit/{id}', [FaqController::class, 'edit'])->name('admin.faq.edit');
+    Route::post('faq/edit/{id}', [FaqController::class, 'update'])->name('admin.faq.update');
+    Route::delete('faq/destroy/{id}',[FaqController::class, 'destroy'])->name('admin.faq.destroy');
 });
