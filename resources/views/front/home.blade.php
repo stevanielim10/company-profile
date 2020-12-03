@@ -1,5 +1,25 @@
 @extends('layouts.front')
 
+@section('meta')
+<!-- Primary Meta Tags -->
+<meta name="description" content="{{ $general->meta_desc }}">
+<meta name="keywords" content="{{ $general->keyword }}">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vanjava.net">
+<meta property="og:title" content="{{ $general->title }}">
+<meta property="og:description" content="{{ $general->meta_desc }}">
+<meta property="og:image" content="{{ asset('storage/'.$general->favicon) }}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vanjava.net">
+<meta property="twitter:title" content="{{ $general->title }}">
+<meta property="twitter:description" content="{{ $general->meta_desc }}">
+<meta property="twitter:image" content="{{ asset('storage/'.$general->favicon) }}">
+
+@endsection
+
 @section('content')
     <!-- ======= Hero Section ======= -->
   <section id="hero">

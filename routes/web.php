@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{BannerController, CategoryController, FrontController, GeneralController, PcategoryController, PortfolioController, PostController, TagController};
+use App\Http\Controllers\{BannerController, CategoryController, FrontController, GeneralController, PcategoryController, PortfolioController, PostController, TagController, TestimonialController};
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,14 @@ Route::get('services', [FrontController::class, 'service'])->name('service');
 Route::get('portfolio', [FrontController::class, 'portfolio'])->name('portfolio');
 Route::get('portfolio/{slug}', [FrontController::class, 'portfolioshow'])->name('portfolioshow');
 Route::get('blog', [FrontController::class, 'blog'])->name('blog');
-Route::get('blog/detail', [FrontController::class, 'blogshow'])->name('blogshow');
+Route::get('blog/search',[FrontController::class, 'search'])->name('search');
+Route::get('blog/{slug}', [FrontController::class, 'blogshow'])->name('blogshow');
+
+
+Route::get('categories/{category:slug}',[FrontController::class, 'category'])->name('category');
+Route::get('tags/{tag:slug}',[FrontController::class, 'tag'])->name('tag');
+
+
 
 Auth::routes([
     'register' => false
@@ -101,5 +108,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::delete('post/trash/{id}',[PostController::class, 'destroy'])->name('admin.post.destroy');
 
     Route::delete('post/destroy/{id}',[PostController::class, 'deletePermanent'])->name('admin.post.deletePermanent');
+
+    // Manage Testimonials
+    Route::get('testimonials', [TestimonialController::class, 'index'])->name('admin.testi');
+    Route::get('testimonials/create', [TestimonialController::class, 'create'])->name('admin.testi.create');
+    Route::post('testimonials/create', [TestimonialController::class, 'store'])->name('admin.testi.store');
+    Route::get('testimonials/edit/{id}', [TestimonialController::class, 'edit'])->name('admin.testi.edit');
+    Route::post('testimonials/edit/{id}', [TestimonialController::class, 'update'])->name('admin.testi.update');
+    Route::delete('testimonials/destroy/{id}',[TestimonialController::class, 'destroy'])->name('admin.testi.destroy');
+
 
 });

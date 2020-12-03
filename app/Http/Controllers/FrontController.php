@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{About, Banner, General, Pcategory, Portfolio};
+use App\Models\{About, Banner, Category, General, Pcategory, Portfolio, Post, Tag, Testimonial};
 class FrontController extends Controller
 {
     public function home()
@@ -25,7 +25,8 @@ class FrontController extends Controller
     public function testi()
     {
         $general = General::find(1);
-        return view ('front.testi',compact('general'));
+        $testi = Testimonial::orderBy('name','asc')->paginate(6);
+        return view ('front.testi',compact('general','testi'));
     }
     public function service()
     {
@@ -50,13 +51,69 @@ class FrontController extends Controller
 
     public function blog()
     {
+        $categories = Category::all();
         $general = General::find(1);
-        return view ('front.blog',compact('general'));
+        $posts = Post::where('status','=','PUBLISH')->orderBy('id','desc')->paginate(3);
+        
+        // $link = Link::orderBy('id','asc')->get();
+        $recent = Post::orderBy('id','desc')->limit(5)->get();
+        $tags = Tag::all();
+        
+        return view ('front.blog',compact('categories','general','posts','recent','tags'));
     }
 
-    public function blogshow(){
+    public function blogshow($slug)
+    {
+        $categories = Category::all();
+        
         $general = General::find(1);
-        return view ('front.blogshow',compact('general'));
+        $post = Post::where('slug', $slug)->firstOrFail();
+        $old = $post->views;
+        $new = $old + 1;
+        $post->views = $new;
+        $post->update();
+        $recent = Post::orderBy('id','desc')->limit(5)->get();
+        $tags = Tag::get();
+
+        return view ('front.blogshow',compact('categories','general','post','recent','tags'));
+    }
+
+    public function category(Category $category)
+    {
+        $categories = Category::all();
+        $general = General::find(1);
+        $posts = $category->posts()->latest()->paginate(6);
+        // $link = Link::orderBy('id','asc')->get();
+        // $lpost = Post::orderBy('id','desc')->limit(5)->get();
+        $recent = Post::orderBy('id','desc')->limit(5)->get();
+        $tags = Tag::all();
+        return view ('front.blog',compact('categories','general','posts','recent','tags'));
+    }
+
+    public function tag(Tag $tag)
+    {
+        $categories = Category::all();
+        $general = General::find(1);
+        $posts = $tag->posts()->latest()->paginate(12);
+        // $link = Link::orderBy('id','asc')->get();
+        // $lpost = Post::orderBy('id','desc')->limit(5)->get();
+        $recent = Post::orderBy('id','desc')->limit(5)->get();
+        $tags = Tag::all();
+        return view ('front.blog',compact('categories','general','posts','recent','tags'));
+    }
+
+    public function search()
+    {
+       
+        $query = request("query");
+        
+        $categories = Category::all();
+        $general = General::find(1); 
+        $posts = Post::where("title","like","%$query%")->latest()->paginate(9);
+        $recent = Post::orderBy('id','desc')->limit(5)->get();
+        $tags = Tag::all();
+        
+        return view('front.blog',compact("categories","general","posts","query","recent","tags"));
     }
 
 }

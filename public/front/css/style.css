@@ -1892,10 +1892,6 @@ section {
   background-color: #1ed33c;
 }
 
-.blog .blog-pagination {
-  color: #444444;
-}
-
 .blog .blog-pagination ul {
   display: flex;
   padding-left: 0;
@@ -1903,41 +1899,16 @@ section {
 }
 
 .blog .blog-pagination li {
-  border: 1px solid white;
   margin: 0 5px;
   transition: 0.3s;
 }
 
-.blog .blog-pagination li.active {
-  background: white;
-}
 
 .blog .blog-pagination li a {
-  color: #b4aca8;
   padding: 7px 16px;
   display: inline-block;
 }
 
-.blog .blog-pagination li.active, .blog .blog-pagination li:hover {
-  background: #1bbd36;
-  border: 1px solid #1bbd36;
-  border-radius: 4px;
-}
-
-.blog .blog-pagination li.active a, .blog .blog-pagination li:hover a {
-  color: #fff;
-}
-
-.blog .blog-pagination li.disabled {
-  background: #fff;
-  border: 1px solid white;
-}
-
-.blog .blog-pagination li.disabled i {
-  color: #f6f5f5;
-  padding: 10px 16px;
-  display: inline-block;
-}
 
 .blog .sidebar {
   padding: 30px;
